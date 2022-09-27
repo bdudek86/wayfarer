@@ -303,7 +303,7 @@
             // What is it? (Required)
             whatIsYN.forEach(group => {
                 if (rate < 0 || !group.querySelector('mat-button-toggle.mat-button-toggle-checked')) {
-                    group.querySelector('mat-button-toggle:nth-child(2) button').click();
+                    group.querySelector('mat-button-toggle:nth-child(1) button').click();
                 }
             });
             if (rate >= 0 && rate <= 5) {
