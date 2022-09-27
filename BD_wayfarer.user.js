@@ -1,6 +1,8 @@
 // ==UserScript==
 // @name         BD Wayfarer Aid
 // @version      00.01
+// @author       bdudek86
+// @description  Niantic Wayfarer Aid
 // @downloadURL  https://github.com/bdudek86/wayfarer/raw/main/BD_wayfarer.user.js
 // @homepageURL  https://github.com/bdudek86/wayfarer
 // @match        https://wayfarer.nianticlabs.com/*
