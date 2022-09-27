@@ -1,6 +1,6 @@
 // ==UserScript==
 // @name         BD Wayfarer Aid
-// @version      00.01
+// @version      00.02
 // @author       bdudek86
 // @description  Niantic Wayfarer Aid
 // @downloadURL  https://github.com/bdudek86/wayfarer/raw/main/BD_wayfarer.user.js
@@ -53,7 +53,7 @@
                 return;
             }
             addCss();
-            initKeyboardCtrl();
+            setTimeout(initKeyboardCtrl, 3000); // delayed to wait for map load
 
         } catch (e) {
             console.log(e); // eslint-disable-line no-console
@@ -114,6 +114,7 @@
             ratingElements[0].classList.add('kbdActiveElement');
             ratingElements[0].focus();
             ratingElements[0].scrollIntoView(false);
+
             document.addEventListener('keydown', keyDownEvent);
 
             // Add CSS styling to indicate options 4 and 5 for what is it if that question is mandatory
@@ -264,8 +265,16 @@
                 modifyRejectionPanel();
             } else if (e.keyCode >= 97 && e.keyCode <= 101) { // 1-5 Num pad
                 suppress = setRating(e.keyCode - 97, true);
-            } else if (e.keyCode >= 49 && e.keyCode <= 53) { // 1-5 normal
-                suppress = setRating(e.keyCode - 49, true);
+            } else if (e.keyCode == 50) { // 2 normal
+                suppress = autorate(2,2,2,2,2,2);
+            } else if (e.keyCode == 51) { // 3 normal
+                suppress = autorate(3,5,3,3,5,3);
+            } else if (e.keyCode == 52) { // 4 normal
+                suppress = autorate(4,4,4,4,4,4);
+            } else if (e.keyCode == 53) { // 5 normal
+                suppress = autorate(5,5,3,5,5,5);
+            } else if (e.keyCode == 54) { // 6 normal
+                suppress = autorate(5,5,5,5,5,5);
             } else if (e.keyCode === 13) { // Enter
                 trySubmit(e.ctrlKey);
             } else if (e.keyCode == 81) { // Q
@@ -291,7 +300,7 @@
         if (suppress) e.preventDefault();
     }
 
-    function setRating(rate, advance){
+    function setRating(rate, advance) {
         const starButtons = ratingElements[revPosition].getElementsByClassName("wf-rate__star");
         const whatIsButtons = ratingElements[revPosition].querySelectorAll('.review-categorization > button');
         const whatIsYN = ratingElements[revPosition].querySelectorAll('.review-categorization > mat-button-toggle-group');
@@ -718,6 +727,17 @@
         style.type = 'text/css';
         style.innerHTML = css;
         document.querySelector('head').appendChild(style);
+    }
+
+    function autorate( rating, descr, meaning, unique, access, location) {
+        setRating(rating-1, true);
+        setRating(descr-1, true);
+        setRating(meaning-1, true);
+        setRating(unique-1, true);
+        setRating(access-1, true);
+        setRating(location-1, true);
+        setRating(0, false);
+        return true;
     }
 
 })();
