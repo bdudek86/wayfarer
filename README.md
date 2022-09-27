@@ -1,8 +1,7 @@
 # wayfarer
 
-#Preconditions
+# Preconditions
 
-Install [Tampermonkey](https://tampermonkey.net/) is required in order to install these plugins, then each can be installed via the link below.
+Install [Tampermonkey](https://tampermonkey.net/).
 
-
-[Install](https://github.com/bdudek86/wayfarer/blame/raw/BD_wayfarer.user.js)
+Install [user script](https://github.com/bdudek86/wayfarer/raw/BD_wayfarer.user.js)
