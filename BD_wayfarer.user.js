@@ -1,34 +1,10 @@
 // ==UserScript==
-// @name         Wayfarer Keyboard Review
-// @version      0.7.5
-// @description  Add keyboard review to Wayfarer
-// @namespace    https://github.com/tehstone/wayfarer-addons
-// @downloadURL  https://github.com/tehstone/wayfarer-addons/raw/main/wayfarer-keyboard-review.user.js
-// @homepageURL  https://github.com/tehstone/wayfarer-addons
+// @name         BD Wayfarer Aid
+// @version      00.01
+// @downloadURL  https://github.com/bdudek86/wayfarer/raw/main/BD_wayfarer.user.js
+// @homepageURL  https://github.com/bdudek86/wayfarer
 // @match        https://wayfarer.nianticlabs.com/*
 // ==/UserScript==
-
-// Copyright 2022 tehstone
-// This file is part of the Wayfarer Addons collection.
-
-// This script is free software: you can redistribute it and/or modify
-// it under the terms of the GNU General Public License as published by
-// the Free Software Foundation, either version 3 of the License, or
-// (at your option) any later version.
-
-// This script is distributed in the hope that it will be useful,
-// but WITHOUT ANY WARRANTY; without even the implied warranty of
-// MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.    See the
-// GNU General Public License for more details.
-
-// You can find a copy of the GNU General Public License in the root
-// directory of this script's GitHub repository:
-// <https://github.com/tehstone/wayfarer-addons/blob/main/LICENSE>
-// If not, see <https://www.gnu.org/licenses/>.
-
-/* eslint-env es6 */
-/* eslint no-var: "error" */
-/* eslint indent: ['error', 2] */
 
 (function() {
     let ratingElements = [];
