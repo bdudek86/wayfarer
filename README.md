@@ -34,6 +34,7 @@ Instrukcja obsługi za [STRONĄ PROJEKTU](https://github.com/tehstone/wayfarer-a
 Wersja skryptu powyżej zmodyfikowana o predefiniowane oceny - wypełnienie formularza recenzji jednym przyciskiem.
 
 ***W BUDOWIE***
+***Do poprawnego działania, skrypt-matka Keyboard Review musi był wyłączony*** 
 
 | Klawisz | Ocena ogólna | Nazwa i opis | Znaczenie historyczne | Wyjątkowy wygląd | Bezpieczny dostęp | Lokalizacja |
 | :-----: | :----------: | :----------: | :-------------------: | :--------------: | :---------------: | :---------: |
