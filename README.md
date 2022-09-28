@@ -37,7 +37,7 @@ Wersja skryptu powyżej zmodyfikowana o predefiniowane oceny - wypełnienie form
 
 | Klawisz | Ocena ogólna | Nazwa i opis | Znaczenie historyczne | Wyjątkowy wygląd | Bezpieczny dostęp | Lokalizacja |
 | :-----: | :----------: | :----------: | :-------------------: | :--------------: | :---------------: | :---------: |
-| ***F1***  | ![star2] | \-\- | \-\- | \-\- | \-\- | \-\- |
+| ***F1***  | ![star] | \-\- | \-\- | \-\- | \-\- | \-\- |
 | ***F2***  | ![star]![star] | ![star]![star]![star] | ![star]![star]![star] | ![star]![star]![star] | ![star]![star]![star]![star]![star] | ![star]![star]![star]![star]![star] |
 | ***F3***  | ![star]![star]![star] | ![star]![star]![star]![star]![star] | ![star]![star]![star] | ![star]![star]![star] | ![star]![star]![star]![star]![star] | ![star]![star]![star]![star]![star] |
 | ***F4***  | ![star]![star]![star]![star] | ![star]![star]![star]![star]![star] | ![star]![star]![star] | ![star]![star]![star]![star] | ![star]![star]![star]![star]![star] | ![star]![star]![star]![star]![star] |
