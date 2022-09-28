@@ -37,12 +37,11 @@ Wersja skryptu powyżej zmodyfikowana o predefiniowane oceny - wypełnienie form
 
 | Klawisz | Ocena ogólna | Nazwa i opis | Znaczenie historyczne | Wyjątkowy wygląd | Bezpieczny dostęp | Lokalizacja |
 | :-----: | :----------: | :----------: | :-------------------: | :--------------: | :---------------: | :---------: |
-| **F1**  | ![star] | \-\- | \-\- | \-\- | \-\- | \-\- |
-| **F2**  | ![star]![star] | ![star]![star] | ![star]![star] | ![star]![star] | ![star]![star] | ![star]![star] |
-[star]: star.png
+| ***F1***  | ![star] | \-\- | \-\- | \-\- | \-\- | \-\- |
+| ***F2***  | ![star]![star] | ![star]![star] | ![star]![star] | ![star]![star] | ![star]![star] | ![star]![star] |
 
 Do pobrania [TUTAJ](https://github.com/bdudek86/wayfarer/raw/main/BD_wayfarer.user.js).
 
 <sup>Rozwijane i testowane na przeglądarce Firefox.<sup>
 
-[star]: star.png
+[star]: star.png star.png
