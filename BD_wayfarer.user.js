@@ -240,7 +240,7 @@
                 backReject();
             }
         } else {
-            } else if (e.keyCode == 112) { // F1
+            if (e.keyCode == 112) { // F1
                 suppress = setRating(0, false);
                 isReject = true;
                 modifyRejectionPanel();
