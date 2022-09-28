@@ -49,3 +49,4 @@ Do pobrania [TUTAJ](https://github.com/bdudek86/wayfarer/raw/main/BD_wayfarer.us
 <sup>Rozwijane i testowane na przeglądarce Firefox.<sup>
 
 [star]: star.png
+ 
