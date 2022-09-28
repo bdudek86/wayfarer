@@ -1,4 +1,4 @@
-# Wstęp
+## Wstęp
 
 Jako warunek konieczny, wymagane jest dodanie do przeglądarki internetowej wtyczki/rozszerzenia ***Tampermonkey*** - menedżera skryptów użytkownika. Oprogramowanie to umożliwia użytkownikowi dodawanie i używanie skryptów użytkownika, będącymi programami JavaScript, które mogą być używane do modyfikowania stron internetowych.
 
@@ -6,7 +6,7 @@ Do pobrania [TUTAJ](https://tampermonkey.net/).
 
 Teoretycznie, działanie skryptów jest takie samo na wszystkich wspieranych przeglądarkach.
 
-# Keyboard Review (skrypt oryginalny)
+## Keyboard Review (skrypt oryginalny)
 
 Jest to skrypt umożliwiający recenzowanie Wayspot-ów wyłącznie przy pomocy klawiatury, a tym samym ułatwiający i przyspieszający cały proces.
 
@@ -29,15 +29,16 @@ Instrukcja obsługi za [STRONĄ PROJEKTU](https://github.com/tehstone/wayfarer-a
 - Number keys to select Edit options
 - Letter keys to select photo options
 
-# BD_wayfarer
+## BD_wayfarer
 
 Wersja skryptu powyżej zmodyfikowana o predefiniowane oceny - wypełnienie formularza recenzji jednym przyciskiem.
 
 ***W BUDOWIE***
 
-| Klawisz | #1    | #2    |
-| :-----: | :---: | :---: |
-| *F1*    | 301   | 283   |
+| Klawisz | Ocena ogólna | Nazwa i opis | Znaczenie historyczne | Wyjątkowy wygląd | Bezpieczny dostęp | Lokalizacja |
+| :-----: | :----------: | :----------: | :-------------------: | :--------------: | :---------------: | :---------: |
+| **F1**  | 301          | 283          |                       |                  |                   |             |
+| **F2**  | 301          | 283          |                       |                  |                   |             |
 
 Do pobrania [TUTAJ](https://github.com/bdudek86/wayfarer/raw/main/BD_wayfarer.user.js).
 
