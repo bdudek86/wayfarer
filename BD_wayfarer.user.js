@@ -1,6 +1,6 @@
 // ==UserScript==
 // @name         BD Wayfarer Aid
-// @version      00.10
+// @version      00.11
 // @author       bdudek86
 // @description  Niantic Wayfarer Aid
 // @downloadURL  https://github.com/bdudek86/wayfarer/raw/main/BD_wayfarer.user.js
@@ -240,7 +240,8 @@
                 backReject();
             }
         } else {
-            if (e.keyCode == 112) { // F1
+            if (e.keyCode == 112) { // F1 = reject
+                updateRevPosition(-100, true);
                 suppress = setRating(0, false);
                 isReject = true;
                 modifyRejectionPanel();
