@@ -312,15 +312,20 @@
                 alert("F1 - " + e.keyCode);
                 suppress = true;
             } else if (e.keyCode == 113) { // F2
-                markDuplicate();
+                alert("F2 - " + e.keyCode);
+                suppress = true;
             } else if (e.keyCode == 114) { // F3
-                markDuplicate();
+                alert("F3 - " + e.keyCode);
+                suppress = true;
             } else if (e.keyCode == 115) { // F4
-                markDuplicate();
+                alert("F4 - " + e.keyCode);
+                suppress = true;
             } else if (e.keyCode == 116) { // F5
-                markDuplicate();
+                alert("F5 - " + e.keyCode);
+                suppress = true;
             } else if (e.keyCode == 117) { // F6
-                markDuplicate();
+                alert("F6 - " + e.keyCode);
+                suppress = true;
             }
         }
         if (suppress) e.preventDefault();
