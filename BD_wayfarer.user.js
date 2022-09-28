@@ -749,7 +749,10 @@
         setRating(unique-1, true);
         setRating(access-1, true);
         setRating(location-1, true);
-        //if (ratingElements[revPosition].querySelectorAll('.review-categorization > mat-button-toggle-group').length > 0) setRating(0, true);
+        if (ratingElements[revPosition].querySelectorAll('.review-categorization > mat-button-toggle-group').length > 0) {
+            setRating(0, true);
+            document.activeElement.blur();
+        }
         return true;
     }
 
