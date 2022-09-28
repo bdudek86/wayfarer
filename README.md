@@ -8,7 +8,7 @@ Teoretycznie, działanie skryptów jest takie samo na wszystkich wspieranych prz
 
 # Keyboard Review (skrypt oryginalny)
 
-Jest to skrypt umożliwiający recenzowanie Waypoint-ów wyłącznie przy pomocy klawiatury, a tym samym ułatwiający i przyspieszający cały proces.
+Jest to skrypt umożliwiający recenzowanie Wayspot-ów wyłącznie przy pomocy klawiatury, a tym samym ułatwiający i przyspieszający cały proces.
 
 Do pobrania [TUTAJ](https://github.com/tehstone/wayfarer-addons/raw/main/wayfarer-keyboard-review.user.js)
 
@@ -34,6 +34,10 @@ Instrukcja obsługi za [STRONĄ PROJEKTU](https://github.com/tehstone/wayfarer-a
 Wersja skryptu powyżej zmodyfikowana o predefiniowane oceny - wypełnienie formularza recenzji jednym przyciskiem.
 
 ***W BUDOWIE***
+
+| Attempt | #1    | #2    |
+| :-----: | :---: | :---: |
+| Seconds | 301   | 283   |
 
 Do pobrania [TUTAJ](https://github.com/bdudek86/wayfarer/raw/main/BD_wayfarer.user.js).
 
