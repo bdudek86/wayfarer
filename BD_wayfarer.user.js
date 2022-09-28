@@ -308,6 +308,19 @@
                 scrollCardBody(50);
             } else if (e.keyCode == 68) { // Duplicate
                 markDuplicate();
+            } else if (e.keyCode == 112) { // F1
+                alert("F1 - " + e.keyCode);
+                suppress = true;
+            } else if (e.keyCode == 113) { // F2
+                markDuplicate();
+            } else if (e.keyCode == 114) { // F3
+                markDuplicate();
+            } else if (e.keyCode == 115) { // F4
+                markDuplicate();
+            } else if (e.keyCode == 116) { // F5
+                markDuplicate();
+            } else if (e.keyCode == 117) { // F6
+                markDuplicate();
             }
         }
         if (suppress) e.preventDefault();
