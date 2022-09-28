@@ -1,13 +1,17 @@
 # Wstęp
 
-Jako warunek konieczny, wymagana jest wtyczka do przeglądarki **Tamoermonkey** - menedżer skryptów użytkownika, który jest dostępny jako rozszerzenie przeglądarki. Oprogramowanie to umożliwia użytkownikowi dodawanie i używanie skryptów użytkownika, które są programami JavaScript, które mogą być używane do modyfikowania stron internetowych.
+Jako warunek konieczny, wymagane jest dodanie do przeglądarki internetowej wtyczki/rozszerzenia ***Tampermonkey*** - menedżera skryptów użytkownika. Oprogramowanie to umożliwia użytkownikowi dodawanie i używanie skryptów użytkownika, będącymi programami JavaScript, które mogą być używane do modyfikowania stron internetowych.
 
 Do pobrania [TUTAJ](https://tampermonkey.net/).
+
+Teoretycznie, działanie skryptów jest takie samo na wszystkich wspieranych przeglądarkach.
 
 # Keyboard Review (skrypt oryginalny)
 
 Jest to skrypt umożliwiający recenzowanie Waypoint-ów wyłącznie przypomocy klawiatury.
+
 Do pobrania [TUTAJ](https://github.com/tehstone/wayfarer-addons/raw/main/wayfarer-keyboard-review.user.js)
+
 Instrukcja obsługi za [STRONĄ PROJEKTU](https://github.com/tehstone/wayfarer-addons)
 
 - Numbers 1-5 to select a rating for the selected category
@@ -30,5 +34,7 @@ Instrukcja obsługi za [STRONĄ PROJEKTU](https://github.com/tehstone/wayfarer-a
 Wersja skryptu powyżej zmodyfikowana o predefiniowane oceny - wypełnienie formularza recenzji jednym przyciskiem.
 
 ***W BUDOWIE***
+
 Do pobrania [TUTAJ](https://github.com/bdudek86/wayfarer/raw/main/BD_wayfarer.user.js).
+
 <sup>Rozwijane i testowane na przeglądarce Firefox.<sup>
