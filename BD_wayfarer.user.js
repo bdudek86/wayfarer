@@ -309,23 +309,19 @@
             } else if (e.keyCode == 68) { // Duplicate
                 markDuplicate();
             } else if (e.keyCode == 112) { // F1
-                alert("F1 - " + e.keyCode);
-                suppress = true;
+                suppress = setRating(0, false);
+                isReject = true;
+                modifyRejectionPanel();
             } else if (e.keyCode == 113) { // F2
-                alert("F2 - " + e.keyCode);
-                suppress = true;
+                suppress = autorate(2,3,3,3,5,5);
             } else if (e.keyCode == 114) { // F3
-                alert("F3 - " + e.keyCode);
-                suppress = true;
+                suppress = autorate(3,5,3,3,5,5);
             } else if (e.keyCode == 115) { // F4
-                alert("F4 - " + e.keyCode);
-                suppress = true;
+                suppress = autorate(4,5,3,4,5,5);
             } else if (e.keyCode == 116) { // F5
-                alert("F5 - " + e.keyCode);
-                suppress = true;
+                suppress = autorate(5,5,3,5,5,5);
             } else if (e.keyCode == 117) { // F6
-                alert("F6 - " + e.keyCode);
-                suppress = true;
+                suppress = autorate(5,5,5,5,5,5);
             }
         }
         if (suppress) e.preventDefault();
@@ -768,13 +764,14 @@
     }
 
     function autorate( rating, descr, meaning, unique, access, location) {
+        updateRevPosition(-100, true);
         setRating(rating-1, true);
         setRating(descr-1, true);
         setRating(meaning-1, true);
         setRating(unique-1, true);
         setRating(access-1, true);
         setRating(location-1, true);
-        if (ratingElements[revPosition].querySelectorAll('.review-categorization > mat-button-toggle-group').length > 0) setRating(0, true);
+        //if (ratingElements[revPosition].querySelectorAll('.review-categorization > mat-button-toggle-group').length > 0) setRating(0, true);
         return true;
     }
 
