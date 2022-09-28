@@ -35,9 +35,9 @@ Wersja skryptu powyżej zmodyfikowana o predefiniowane oceny - wypełnienie form
 
 ***W BUDOWIE***
 
-| Attempt | #1    | #2    |
+| Klawisz | #1    | #2    |
 | :-----: | :---: | :---: |
-| Seconds | 301   | 283   |
+| *F1*    | 301   | 283   |
 
 Do pobrania [TUTAJ](https://github.com/bdudek86/wayfarer/raw/main/BD_wayfarer.user.js).
 
