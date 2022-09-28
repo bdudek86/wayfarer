@@ -1,12 +1,34 @@
 // ==UserScript==
 // @name         BD Wayfarer Aid
-// @version      00.02
+// @version      00.01
 // @author       bdudek86
 // @description  Niantic Wayfarer Aid
 // @downloadURL  https://github.com/bdudek86/wayfarer/raw/main/BD_wayfarer.user.js
 // @homepageURL  https://github.com/bdudek86/wayfarer
 // @match        https://wayfarer.nianticlabs.com/*
 // ==/UserScript==
+
+// Copyright 2022 tehstone
+// This file is part of the Wayfarer Addons collection.
+
+// This script is free software: you can redistribute it and/or modify
+// it under the terms of the GNU General Public License as published by
+// the Free Software Foundation, either version 3 of the License, or
+// (at your option) any later version.
+
+// This script is distributed in the hope that it will be useful,
+// but WITHOUT ANY WARRANTY; without even the implied warranty of
+// MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.    See the
+// GNU General Public License for more details.
+
+// You can find a copy of the GNU General Public License in the root
+// directory of this script's GitHub repository:
+// <https://github.com/tehstone/wayfarer-addons/blob/main/LICENSE>
+// If not, see <https://www.gnu.org/licenses/>.
+
+/* eslint-env es6 */
+/* eslint no-var: "error" */
+/* eslint indent: ['error', 2] */
 
 (function() {
     let ratingElements = [];
@@ -114,7 +136,6 @@
             ratingElements[0].classList.add('kbdActiveElement');
             ratingElements[0].focus();
             ratingElements[0].scrollIntoView(false);
-
             document.addEventListener('keydown', keyDownEvent);
 
             // Add CSS styling to indicate options 4 and 5 for what is it if that question is mandatory
@@ -265,16 +286,8 @@
                 modifyRejectionPanel();
             } else if (e.keyCode >= 97 && e.keyCode <= 101) { // 1-5 Num pad
                 suppress = setRating(e.keyCode - 97, true);
-            } else if (e.keyCode == 50) { // 2 normal
-                suppress = autorate(2,2,2,2,2,2);
-            } else if (e.keyCode == 51) { // 3 normal
-                suppress = autorate(3,5,3,3,5,3);
-            } else if (e.keyCode == 52) { // 4 normal
-                suppress = autorate(4,4,4,4,4,4);
-            } else if (e.keyCode == 53) { // 5 normal
-                suppress = autorate(5,5,3,5,5,5);
-            } else if (e.keyCode == 54) { // 6 normal
-                suppress = autorate(5,5,5,5,5,5);
+            } else if (e.keyCode >= 49 && e.keyCode <= 53) { // 1-5 normal
+                suppress = setRating(e.keyCode - 49, true);
             } else if (e.keyCode === 13) { // Enter
                 trySubmit(e.ctrlKey);
             } else if (e.keyCode == 81) { // Q
@@ -300,7 +313,7 @@
         if (suppress) e.preventDefault();
     }
 
-    function setRating(rate, advance) {
+    function setRating(rate, advance){
         const starButtons = ratingElements[revPosition].getElementsByClassName("wf-rate__star");
         const whatIsButtons = ratingElements[revPosition].querySelectorAll('.review-categorization > button');
         const whatIsYN = ratingElements[revPosition].querySelectorAll('.review-categorization > mat-button-toggle-group');
@@ -681,6 +694,7 @@
             ${whatIsSelector} { font-family: monospace; color: white; }
             ${whatIsOptions}
             ${whatIsYNLabels}
+
             div.review-categorization > button::before { margin-right: 5px; }
             .dark div.review-categorization > button::before { color: white; }
             div.review-categorization > mat-button-toggle-group > div::before { font-family: monospace; color: #FF6D38; }
@@ -688,6 +702,7 @@
             .dark div.review-categorization > mat-button-toggle-group > div { color: white !important; }
             ${whatIsButtons}
             div.review-categorization > button:last-child::before { margin-left: -14px; }
+
             app-review-new #categorization-card.wbkb-yesno > div:first-child > div:first-child::after {
                 content: '[Shift+Tab] = Other\\a[Tab] = Nothing';
                 margin-top: 10px;
@@ -696,16 +711,20 @@
                 font-family: monospace;
                 color: #FF6D38;
             }
+
             app-review-edit mat-radio-button .mat-radio-label-content::before { color: #FF6D38; font-family: monospace; }
             ${editOptions}
+
             app-supporting-info .wf-review-card__body .bg-gray-200 .cursor-pointer::before {
                 content: '[Click here or press A for full supporting info] ';
                 color: #FF6D38;
                 display: block;
             }
+
             app-select-location-edit agm-map div[role="button"]::before { margin-left: 8px; color: black; auto; font-size: 25px; }
             app-select-location-edit mat-checkbox .mat-checkbox-label::before { content: '[Tab]'; color: #FF6D38; font-family: monospace; }
             ${locationOptions}
+
             app-photo-card .photo-card__actions::before { font-size: 24px; margin-right: 20px; }
             app-accept-all-photos-card .photo-card__overlay span::after {
                 content: '[Press Tab to accept all photos] ';
@@ -713,6 +732,7 @@
                 display: block;
             }
             ${photoOptions}
+
         .card.kbdActiveElement {
             border-width: 1px;
         }
@@ -736,7 +756,7 @@
         setRating(unique-1, true);
         setRating(access-1, true);
         setRating(location-1, true);
-        setRating(0, false);
+        if (ratingElements[revPosition].querySelectorAll('.review-categorization > mat-button-toggle-group').length > 0) setRating(0, true);
         return true;
     }
 
