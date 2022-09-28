@@ -1,6 +1,6 @@
 // ==UserScript==
 // @name         BD Wayfarer Aid
-// @version      00.03
+// @version      00.04
 // @author       bdudek86
 // @description  Niantic Wayfarer Aid
 // @downloadURL  https://github.com/bdudek86/wayfarer/raw/main/BD_wayfarer.user.js
@@ -749,7 +749,7 @@
         setRating(unique-1, true);
         setRating(access-1, true);
         setRating(location-1, true);
-        //if (ratingElements[revPosition].querySelectorAll('.review-categorization > mat-button-toggle-group').length > 0) setRating(0, true);
+        if (ratingElements[revPosition].querySelectorAll('.review-categorization > mat-button-toggle-group').length > 0) setRating(0, true);
         return true;
     }
 
