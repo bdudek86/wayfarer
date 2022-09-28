@@ -37,8 +37,9 @@ Wersja skryptu powyżej zmodyfikowana o predefiniowane oceny - wypełnienie form
 
 | Klawisz | Ocena ogólna | Nazwa i opis | Znaczenie historyczne | Wyjątkowy wygląd | Bezpieczny dostęp | Lokalizacja |
 | :-----: | :----------: | :----------: | :-------------------: | :--------------: | :---------------: | :---------: |
-| **F1**  | ![star] | 283          |                       |                  |                   |             |
-| **F2**  | ![star]| 283          |                       |                  |                   |             |
+| **F1**  | ![star] | \-\- | \-\- | \-\- | \-\- | \-\- |
+| **F2**  | ![star]![star] | ![star]![star] | ![star]![star] | ![star]![star] | ![star]![star] | ![star]![star] |
+[star]: star.png
 
 Do pobrania [TUTAJ](https://github.com/bdudek86/wayfarer/raw/main/BD_wayfarer.user.js).
 
