@@ -8,28 +8,6 @@
 // @match        https://wayfarer.nianticlabs.com/*
 // ==/UserScript==
 
-// Copyright 2022 tehstone
-// This file is part of the Wayfarer Addons collection.
-
-// This script is free software: you can redistribute it and/or modify
-// it under the terms of the GNU General Public License as published by
-// the Free Software Foundation, either version 3 of the License, or
-// (at your option) any later version.
-
-// This script is distributed in the hope that it will be useful,
-// but WITHOUT ANY WARRANTY; without even the implied warranty of
-// MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.    See the
-// GNU General Public License for more details.
-
-// You can find a copy of the GNU General Public License in the root
-// directory of this script's GitHub repository:
-// <https://github.com/tehstone/wayfarer-addons/blob/main/LICENSE>
-// If not, see <https://www.gnu.org/licenses/>.
-
-/* eslint-env es6 */
-/* eslint no-var: "error" */
-/* eslint indent: ['error', 2] */
-
 (function() {
     let ratingElements = [];
     let revPosition = 0;
@@ -262,7 +240,21 @@
                 backReject();
             }
         } else {
-            if (revPosition === 6) { // what is it? menu
+            } else if (e.keyCode == 112) { // F1
+                suppress = setRating(0, false);
+                isReject = true;
+                modifyRejectionPanel();
+            } else if (e.keyCode == 113) { // F2
+                suppress = autorate(2,3,3,3,5,5);
+            } else if (e.keyCode == 114) { // F3
+                suppress = autorate(3,5,3,3,5,5);
+            } else if (e.keyCode == 115) { // F4
+                suppress = autorate(4,5,3,4,5,5);
+            } else if (e.keyCode == 116) { // F5
+                suppress = autorate(5,5,3,5,5,5);
+            } else if (e.keyCode == 117) { // F6
+                suppress = autorate(5,5,5,5,5,5);
+            } else if (revPosition === 6) { // what is it? menu
                 if (e.keyCode >= 97 && e.keyCode <= 102) { // 1-6 Num pad
                     suppress = setRating(e.keyCode - 97, true);
                     document.activeElement.blur();
@@ -308,20 +300,6 @@
                 scrollCardBody(50);
             } else if (e.keyCode == 68) { // Duplicate
                 markDuplicate();
-            } else if (e.keyCode == 112) { // F1
-                suppress = setRating(0, false);
-                isReject = true;
-                modifyRejectionPanel();
-            } else if (e.keyCode == 113) { // F2
-                suppress = autorate(2,3,3,3,5,5);
-            } else if (e.keyCode == 114) { // F3
-                suppress = autorate(3,5,3,3,5,5);
-            } else if (e.keyCode == 115) { // F4
-                suppress = autorate(4,5,3,4,5,5);
-            } else if (e.keyCode == 116) { // F5
-                suppress = autorate(5,5,3,5,5,5);
-            } else if (e.keyCode == 117) { // F6
-                suppress = autorate(5,5,5,5,5,5);
             }
         }
         if (suppress) e.preventDefault();
