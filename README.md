@@ -31,9 +31,9 @@ Instrukcja obsługi za [STRONĄ PROJEKTU](https://github.com/tehstone/wayfarer-a
 
 # BD_wayfarer (W BUDOWIE)
 
-Wersja skryptu powyżej zmodyfikowana o predefiniowane oceny - wypełnienie formularza recenzji jednym przyciskiem.
-
 ***Do poprawnego działania, skrypt-matka Keyboard Review musi był wyłączony*** 
+
+Wersja skryptu powyżej zmodyfikowana o predefiniowane oceny - wypełnienie formularza recenzji jednym przyciskiem, zgodnie z tabelą poniżej. Przytrzymanie klawisza ***SHIFT*** spowoduje natychmiastowe wysłanie oceny.
 
 | Klawisz | Ocena ogólna | Nazwa i opis | Znaczenie historyczne | Wyjątkowy wygląd | Bezpieczny dostęp | Lokalizacja |
 | :-----: | :----------: | :----------: | :-------------------: | :--------------: | :---------------: | :---------: |
