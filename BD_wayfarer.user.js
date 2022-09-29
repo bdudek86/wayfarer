@@ -267,7 +267,7 @@
                 } else if (e.keyCode >= 49 && e.keyCode <= 54) { // 1-6 normal
                     suppress = setRating(e.keyCode - 49, true);
                     document.activeElement.blur();
-                } else if (e.keyCode === 9) {
+                } else if (e.keyCode === 9) { // Tab
                     suppress = setRating(e.shiftKey ? -1 : -2, false);
                 } else if (e.keyCode === 13) { // Enter
                     trySubmit(e.ctrlKey);
