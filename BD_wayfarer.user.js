@@ -1,6 +1,6 @@
 // ==UserScript==
 // @name         BD Wayfarer Aid
-// @version      00.11
+// @version      00.12
 // @author       bdudek86
 // @description  Niantic Wayfarer Aid
 // @downloadURL  https://github.com/bdudek86/wayfarer/raw/main/BD_wayfarer.user.js
@@ -247,14 +247,19 @@
                 modifyRejectionPanel();
             } else if (e.keyCode == 113) { // F2
                 suppress = autorate(2,3,3,3,5,5);
+                if (e.shiftKey) trySubmit(e.ctrlKey);
             } else if (e.keyCode == 114) { // F3
                 suppress = autorate(3,5,3,3,5,5);
+                if (e.shiftKey) trySubmit(e.ctrlKey);
             } else if (e.keyCode == 115) { // F4
                 suppress = autorate(4,5,3,4,5,5);
+                if (e.shiftKey) trySubmit(e.ctrlKey);
             } else if (e.keyCode == 116) { // F5
                 suppress = autorate(5,5,3,5,5,5);
+                if (e.shiftKey) trySubmit(e.ctrlKey);
             } else if (e.keyCode == 117) { // F6
                 suppress = autorate(5,5,5,5,5,5);
+                if (e.shiftKey) trySubmit(e.ctrlKey);
             } else if (revPosition === 6) { // what is it? menu
                 if (e.keyCode >= 97 && e.keyCode <= 102) { // 1-6 Num pad
                     suppress = setRating(e.keyCode - 97, true);
