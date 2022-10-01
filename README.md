@@ -38,15 +38,17 @@ Wersja skryptu powyżej zmodyfikowana o predefiniowane oceny - wypełnienie form
 | Klawisz | Ocena ogólna | Nazwa i opis | Znaczenie historyczne | Wyjątkowy wygląd | Bezpieczny dostęp | Lokalizacja |
 | :-----: | :----------: | :----------: | :-------------------: | :--------------: | :---------------: | :---------: |
 | ***F1***  | ![star] | \-\- | \-\- | \-\- | \-\- | \-\- |
-| ***F2***  | ![star]![star] | ![star]![star]![star] | ![star]![star]![star] | ![star]![star]![star] | ![star]![star]![star]![star]![star] | ![star]![star]![star]![star]![star] |
-| ***F3***  | ![star]![star]![star] | ![star]![star]![star]![star]![star] | ![star]![star]![star] | ![star]![star]![star] | ![star]![star]![star]![star]![star] | ![star]![star]![star]![star]![star] |
-| ***F4***  | ![star]![star]![star]![star] | ![star]![star]![star]![star]![star] | ![star]![star]![star] | ![star]![star]![star]![star] | ![star]![star]![star]![star]![star] | ![star]![star]![star]![star]![star] |
-| ***F5***  | ![star]![star]![star]![star]![star] | ![star]![star]![star]![star]![star] | ![star]![star]![star] | ![star]![star]![star]![star]![star] | ![star]![star]![star]![star]![star] | ![star]![star]![star]![star]![star] |
-| ***F6***  | ![star]![star]![star]![star]![star] | ![star]![star]![star]![star]![star] | ![star]![star]![star]![star]![star] | ![star]![star]![star]![star]![star] | ![star]![star]![star]![star]![star] | ![star]![star]![star]![star]![star] |
+| ***F2***  | ![star]![star] | ![star]![star]![star] | ![star]![star]![star] | ![star]![star]![star] | ![star]![star]![star]![star]![star] | ![star]![star]![star] [^1]<br>![star]![star]![star]![star]![star] [^2] |
+| ***F3***  | ![star]![star]![star] | ![star]![star]![star]![star]![star] | ![star]![star]![star] | ![star]![star]![star] | ![star]![star]![star]![star]![star] | ![star]![star]![star] [^1]<br>![star]![star]![star]![star]![star] [^2] |
+| ***F4***  | ![star]![star]![star]![star] | ![star]![star]![star]![star]![star] | ![star]![star]![star] | ![star]![star]![star]![star] | ![star]![star]![star]![star]![star] | ![star]![star]![star] [^1]<br>![star]![star]![star]![star]![star] [^2] |
+| ***F5***  | ![star]![star]![star]![star]![star] | ![star]![star]![star]![star]![star] | ![star]![star]![star] | ![star]![star]![star]![star]![star] | ![star]![star]![star]![star]![star] | ![star]![star]![star] [^1]<br>![star]![star]![star]![star]![star] [^2] |
+| ***F6***  | ![star]![star]![star]![star]![star] | ![star]![star]![star]![star]![star] | ![star]![star]![star]![star]![star] | ![star]![star]![star]![star]![star] | ![star]![star]![star]![star]![star] | ![star]![star]![star] [^1]<br>![star]![star]![star]![star]![star] [^2] |
 
 Do pobrania [TUTAJ](https://github.com/bdudek86/wayfarer/raw/main/BD_wayfarer.user.js).
 
-<sup>Rozwijane i testowane na przeglądarce Firefox.<sup>
+<sup>Rozwijane i testowane na przeglądarce Firefox.<br> Niektóe funkcje działąją poprawnie tylko z polskim interfejsem Street View.<sup>
 
 [star]: star.png
+[^1]: Street View niedostępne w proponowanej lokalizacji
+[^2]: Street View dostępne w proponowanej lokalizacji
  
