@@ -6,7 +6,7 @@ Do pobrania [TUTAJ](https://tampermonkey.net/).
 
 Teoretycznie, działanie skryptów jest takie samo na wszystkich wspieranych przeglądarkach.
 
-## Keyboard Review (skrypt oryginalny)
+# Keyboard Review (skrypt oryginalny)
 
 Jest to skrypt umożliwiający recenzowanie nominacji Wayspot-ów wyłącznie przy pomocy klawiatury, a tym samym ułatwiający i przyspieszający cały proces.
 
@@ -51,4 +51,7 @@ Do pobrania [TUTAJ](https://github.com/bdudek86/wayfarer/raw/main/BD_wayfarer.us
 [star]: star.png
 [^1]: Street View niedostępne w proponowanej lokalizacji
 [^2]: Street View dostępne w proponowanej lokalizacji
- 
+
+# Inne przydatne narzędzia
+
+- [Edits Diff](https://github.com/tehstone/wayfarer-addons/raw/main/wayfarer-edits-diff.user.js) - ułatwia znalezienie niewielkich różnic np. przy wyborze najlepszego z opisów Wayspot-aa.
