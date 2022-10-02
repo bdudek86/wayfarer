@@ -46,6 +46,8 @@ Jest to modyfikacja skryptu Keyboard Review wzbogacona o predefiniowane oceny - 
 | ***F5***  | ![star]![star]![star]![star]![star] | ![star]![star]![star]![star]![star] | ![star]![star]![star] | ![star]![star]![star]![star]![star] | ![star]![star]![star]![star]![star] | ![star]![star]![star] [^1]<br>![star]![star]![star]![star]![star] [^2] |
 | ***F6***  | ![star]![star]![star]![star]![star] | ![star]![star]![star]![star]![star] | ![star]![star]![star]![star]![star] | ![star]![star]![star]![star]![star] | ![star]![star]![star]![star]![star] | ![star]![star]![star] [^1]<br>![star]![star]![star]![star]![star] [^2] |
 
+- "C" zamyka widok Street View w oknie oceny dokładności lokalizacji
+
 Do pobrania [TUTAJ](https://github.com/bdudek86/wayfarer/raw/main/BD_wayfarer.user.js).
 
 <sup>Rozwijane i testowane na przeglądarce Firefox.<br> Niektóre funkcje działają poprawnie tylko z polskim interfejsem Street View.<sup>
