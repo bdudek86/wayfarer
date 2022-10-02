@@ -35,7 +35,7 @@ Szczególną uwagę należy zwrócić na [Edits Diff](https://github.com/tehston
 
 ***Do poprawnego działania, skrypt-matka Keyboard Review musi był wyłączony*** 
 
-Jest to modyfikacja skryptu Keyboard Review zmodyfikowana o predefiniowane oceny - możliwość wypełnienia formularza recenzji nominacji jednym przyciskiem, zgodnie z tabelą poniżej. Przytrzymanie klawisza ***SHIFT*** spowoduje natychmiastowe wysłanie oceny.
+Jest to modyfikacja skryptu Keyboard Review wzbogacona o predefiniowane oceny - możliwość wypełnienia formularza recenzji nominacji jednym przyciskiem, zgodnie z tabelą poniżej. Przytrzymanie klawisza ***SHIFT*** spowoduje natychmiastowe wysłanie oceny.
 
 | Klawisz | Ocena ogólna | Nazwa i opis | Znaczenie historyczne | Wyjątkowy wygląd | Bezpieczny dostęp | Lokalizacja |
 | :-----: | :----------: | :----------: | :-------------------: | :--------------: | :---------------: | :---------: |
@@ -48,7 +48,7 @@ Jest to modyfikacja skryptu Keyboard Review zmodyfikowana o predefiniowane oceny
 
 Do pobrania [TUTAJ](https://github.com/bdudek86/wayfarer/raw/main/BD_wayfarer.user.js).
 
-<sup>Rozwijane i testowane na przeglądarce Firefox.<br> Niektóe funkcje działąją poprawnie tylko z polskim interfejsem Street View.<sup>
+<sup>Rozwijane i testowane na przeglądarce Firefox.<br> Niektóre funkcje działają poprawnie tylko z polskim interfejsem Street View.<sup>
 
 [star]: star.png
 [^1]: Street View niedostępne w proponowanej lokalizacji
