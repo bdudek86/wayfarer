@@ -29,15 +29,13 @@ Instrukcja obsługi za [STRONĄ PROJEKTU](https://github.com/tehstone/wayfarer-a
 - Number keys to select Edit options
 - Letter keys to select photo options
 
-# Inne przydatne narzędzia
-
-- [Edits Diff](https://github.com/tehstone/wayfarer-addons/raw/main/wayfarer-edits-diff.user.js) - ułatwia znalezienie niewielkich różnic np. przy wyborze najlepszego z opisów Wayspot-a.
+Szczególną uwagę należy zwrócić na [Edits Diff](https://github.com/tehstone/wayfarer-addons/raw/main/wayfarer-edits-diff.user.js) - ułatwia znalezienie niewielkich różnic np. przy wyborze najlepszego z opisów Wayspot-a.
 
 # BD Wayfarer Aid (W BUDOWIE)
 
 ***Do poprawnego działania, skrypt-matka Keyboard Review musi był wyłączony*** 
 
-Wersja skryptu powyżej zmodyfikowana o predefiniowane oceny - wypełnienie formularza recenzji nominacji jednym przyciskiem, zgodnie z tabelą poniżej. Przytrzymanie klawisza ***SHIFT*** spowoduje natychmiastowe wysłanie oceny.
+Jest to modyfikacja skryptu Keyboard Review zmodyfikowana o predefiniowane oceny - możliwość wypełnienia formularza recenzji nominacji jednym przyciskiem, zgodnie z tabelą poniżej. Przytrzymanie klawisza ***SHIFT*** spowoduje natychmiastowe wysłanie oceny.
 
 | Klawisz | Ocena ogólna | Nazwa i opis | Znaczenie historyczne | Wyjątkowy wygląd | Bezpieczny dostęp | Lokalizacja |
 | :-----: | :----------: | :----------: | :-------------------: | :--------------: | :---------------: | :---------: |
