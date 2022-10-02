@@ -29,7 +29,11 @@ Instrukcja obsługi za [STRONĄ PROJEKTU](https://github.com/tehstone/wayfarer-a
 - Number keys to select Edit options
 - Letter keys to select photo options
 
-# BD_wayfarer (W BUDOWIE)
+# Inne przydatne narzędzia
+
+- [Edits Diff](https://github.com/tehstone/wayfarer-addons/raw/main/wayfarer-edits-diff.user.js) - ułatwia znalezienie niewielkich różnic np. przy wyborze najlepszego z opisów Wayspot-a.
+
+# BD Wayfarer Aid (W BUDOWIE)
 
 ***Do poprawnego działania, skrypt-matka Keyboard Review musi był wyłączony*** 
 
@@ -51,7 +55,3 @@ Do pobrania [TUTAJ](https://github.com/bdudek86/wayfarer/raw/main/BD_wayfarer.us
 [star]: star.png
 [^1]: Street View niedostępne w proponowanej lokalizacji
 [^2]: Street View dostępne w proponowanej lokalizacji
-
-# Inne przydatne narzędzia
-
-- [Edits Diff](https://github.com/tehstone/wayfarer-addons/raw/main/wayfarer-edits-diff.user.js) - ułatwia znalezienie niewielkich różnic np. przy wyborze najlepszego z opisów Wayspot-aa.
