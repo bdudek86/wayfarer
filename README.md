@@ -47,6 +47,10 @@ Jest to modyfikacja skryptu Keyboard Review wzbogacona o predefiniowane oceny - 
 | ***F6***  | ![star]![star]![star]![star]![star] | ![star]![star]![star]![star]![star] | ![star]![star]![star]![star]![star] | ![star]![star]![star]![star]![star] | ![star]![star]![star]![star]![star] | ![star]![star]![star] [^1]<br>![star]![star]![star]![star]![star] [^2] |
 
 - "C" zamyka widok Street View w oknie oceny dokładności lokalizacji
+- "T" odrzucenie nominacji z powodu tymczasowości
+- "U" odrzucenie nominacji z powodu "inne" = ogólnie do dupy
+- "P" odrzucenie nominacji z powodu własności prywatnej
+- "L" odrzucenie nominacji z powodu niedopasowanej lokalizacji
 
 Do pobrania [TUTAJ](https://github.com/bdudek86/wayfarer/raw/main/BD_wayfarer.user.js).
 
