@@ -1,6 +1,6 @@
 // ==UserScript==
 // @name         BD Wayfarer Aid
-// @version      00.14
+// @version      00.15
 // @author       bdudek86
 // @description  Niantic Wayfarer Aid
 // @downloadURL  https://github.com/bdudek86/wayfarer/raw/main/BD_wayfarer.user.js
@@ -262,6 +262,39 @@
                 if (e.shiftKey) trySubmit(e.ctrlKey);
             } else if (e.keyCode == 86) { // V
                 document.querySelectorAll('button[title="Zamknij widok Street View"]')[0].click();
+            } else if (e.keyCode == 76) { // L (wrong location)
+                updateRevPosition(-100, true);
+                suppress = setRating(0, false);
+                isReject = true;
+                modifyRejectionPanel();
+                setTimeout( function(){ handleRejectEntry(e, 1) }, 500);
+                setTimeout( function(){ handleRejectEntry(e, 2) }, 500);
+                setTimeout( function(){ submitReject(e) }, 500);
+
+            } else if (e.keyCode == 84) { // T (temporary
+                updateRevPosition(-100, true);
+                suppress = setRating(0, false);
+                isReject = true;
+                modifyRejectionPanel();
+                setTimeout( function(){ handleRejectEntry(e, 0) }, 500);
+                setTimeout( function(){ handleRejectEntry(e, 5) }, 500);
+                setTimeout( function(){ submitReject(e) }, 500);
+            } else if (e.keyCode == 85) { // U (ugly)
+                updateRevPosition(-100, true);
+                suppress = setRating(0, false);
+                isReject = true;
+                modifyRejectionPanel();
+                setTimeout( function(){ handleRejectEntry(e, 0) }, 500);
+                setTimeout( function(){ handleRejectEntry(e, 1) }, 500);
+                setTimeout( function(){ submitReject(e) }, 500);
+            } else if (e.keyCode == 80) { // P (private)
+                updateRevPosition(-100, true);
+                suppress = setRating(0, false);
+                isReject = true;
+                modifyRejectionPanel();
+                setTimeout( function(){ handleRejectEntry(e, 1) }, 500);
+                setTimeout( function(){ handleRejectEntry(e, 5) }, 500);
+                setTimeout( function(){ submitReject(e) }, 500);
             } else if (revPosition === 6) { // what is it? menu
                 if (e.keyCode >= 97 && e.keyCode <= 102) { // 1-6 Num pad
                     suppress = setRating(e.keyCode - 97, true);
