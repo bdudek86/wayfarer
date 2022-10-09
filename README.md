@@ -51,6 +51,9 @@ Jest to modyfikacja skryptu Keyboard Review wzbogacona o predefiniowane oceny - 
 - "U" odrzucenie nominacji z powodu "inne" = ogólnie do dupy
 - "P" odrzucenie nominacji z powodu własności prywatnej
 - "L" odrzucenie nominacji z powodu niedopasowanej lokalizacji
+- "O" odrzucenie nominacji z powodu jakości opisu
+- "N" odrzucenie nominacji jako elementu przyrody
+- "K" odrzucenie nominacji jako K-12
 
 Do pobrania [TUTAJ](https://github.com/bdudek86/wayfarer/raw/main/BD_wayfarer.user.js).
 
