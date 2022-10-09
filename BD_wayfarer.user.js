@@ -8,6 +8,11 @@
 // @match        https://wayfarer.nianticlabs.com/*
 // ==/UserScript==
 
+const TWAIT_LOAD = 1000; //[ms]
+const TWAIT_PHOTO = 7000; //[ms]
+const TWAIT_REJECT = 200; //[ms]
+const TWAIT_SUBMIT = 2*TWAIT_REJECT + 200; //[ms]
+
 (function() {
     let ratingElements = [];
     let revPosition = 0;
@@ -53,8 +58,21 @@
                 return;
             }
             addCss();
-            setTimeout(initKeyboardCtrl, 3000); // delayed to wait for map load
-
+            let showphoto = null;
+            setTimeout( function(){ showphoto = document.querySelector('app-should-be-wayspot');
+                                    if (showphoto) {
+                                        fullSizePhoto('app-should-be-wayspot');
+                                        setTimeout( function(){ fullSizePhoto('app-should-be-wayspot');
+                                                               initKeyboardCtrl();
+                                                              }, TWAIT_PHOTO);
+                                    } else {
+                                        initKeyboardCtrl();
+                                    }
+                                  }, TWAIT_LOAD);
+            //setTimeout( function(){ fullSizePhoto('app-should-be-wayspot') }, TWAIT_LOAD);
+            //setTimeout( function(){ fullSizePhoto('app-should-be-wayspot') }, TWAIT_LOAD+TWAIT_PHOTO);
+            //setTimeout( function(){ initKeyboardCtrl() }, TWAIT_LOAD+TWAIT_PHOTO);
+            
         } catch (e) {
             console.log(e); // eslint-disable-line no-console
         }
@@ -267,34 +285,58 @@
                 suppress = setRating(0, false);
                 isReject = true;
                 modifyRejectionPanel();
-                setTimeout( function(){ handleRejectEntry(e, 1) }, 500);
-                setTimeout( function(){ handleRejectEntry(e, 2) }, 500);
-                setTimeout( function(){ submitReject(e) }, 500);
+                setTimeout( function(){ handleRejectEntry(e, 1) }, TWAIT_REJECT);
+                setTimeout( function(){ handleRejectEntry(e, 2) }, 2*TWAIT_REJECT);
+                setTimeout( function(){ submitReject(e) }, TWAIT_SUBMIT);
 
-            } else if (e.keyCode == 84) { // T (temporary
+            } else if (e.keyCode == 75) { // K (K-12)
                 updateRevPosition(-100, true);
                 suppress = setRating(0, false);
                 isReject = true;
                 modifyRejectionPanel();
-                setTimeout( function(){ handleRejectEntry(e, 0) }, 500);
-                setTimeout( function(){ handleRejectEntry(e, 5) }, 500);
-                setTimeout( function(){ submitReject(e) }, 500);
+                setTimeout( function(){ handleRejectEntry(e, 1) }, TWAIT_REJECT);
+                setTimeout( function(){ handleRejectEntry(e, 6) }, 2*TWAIT_REJECT);
+                setTimeout( function(){ submitReject(e) }, TWAIT_SUBMIT);
+            } else if (e.keyCode == 84) { // T (temporary)
+                updateRevPosition(-100, true);
+                suppress = setRating(0, false);
+                isReject = true;
+                modifyRejectionPanel();
+                setTimeout( function(){ handleRejectEntry(e, 0) }, TWAIT_REJECT);
+                setTimeout( function(){ handleRejectEntry(e, 5) }, 2*TWAIT_REJECT);
+                setTimeout( function(){ submitReject(e) }, TWAIT_SUBMIT);
             } else if (e.keyCode == 85) { // U (ugly)
                 updateRevPosition(-100, true);
                 suppress = setRating(0, false);
                 isReject = true;
                 modifyRejectionPanel();
-                setTimeout( function(){ handleRejectEntry(e, 0) }, 500);
-                setTimeout( function(){ handleRejectEntry(e, 1) }, 500);
-                setTimeout( function(){ submitReject(e) }, 500);
+                setTimeout( function(){ handleRejectEntry(e, 0) }, TWAIT_REJECT);
+                setTimeout( function(){ handleRejectEntry(e, 1) }, 2*TWAIT_REJECT);
+                setTimeout( function(){ submitReject(e) }, TWAIT_SUBMIT);
+            } else if (e.keyCode == 78) { // N (nature)
+                updateRevPosition(-100, true);
+                suppress = setRating(0, false);
+                isReject = true;
+                modifyRejectionPanel();
+                setTimeout( function(){ handleRejectEntry(e, 0) }, TWAIT_REJECT);
+                setTimeout( function(){ handleRejectEntry(e, 3) }, 2*TWAIT_REJECT);
+                setTimeout( function(){ submitReject(e) }, TWAIT_SUBMIT);
+            } else if (e.keyCode == 79) { // O (opis)
+                updateRevPosition(-100, true);
+                suppress = setRating(0, false);
+                isReject = true;
+                modifyRejectionPanel();
+                setTimeout( function(){ handleRejectEntry(e, 3) }, TWAIT_REJECT);
+                setTimeout( function(){ handleRejectEntry(e, 1) }, 2*TWAIT_REJECT);
+                setTimeout( function(){ submitReject(e) }, TWAIT_SUBMIT);
             } else if (e.keyCode == 80) { // P (private)
                 updateRevPosition(-100, true);
                 suppress = setRating(0, false);
                 isReject = true;
                 modifyRejectionPanel();
-                setTimeout( function(){ handleRejectEntry(e, 1) }, 500);
-                setTimeout( function(){ handleRejectEntry(e, 5) }, 500);
-                setTimeout( function(){ submitReject(e) }, 500);
+                setTimeout( function(){ handleRejectEntry(e, 1) }, TWAIT_REJECT);
+                setTimeout( function(){ handleRejectEntry(e, 5) }, 2*TWAIT_REJECT);
+                setTimeout( function(){ submitReject(e) }, TWAIT_SUBMIT);
             } else if (revPosition === 6) { // what is it? menu
                 if (e.keyCode >= 97 && e.keyCode <= 102) { // 1-6 Num pad
                     suppress = setRating(e.keyCode - 97, true);
