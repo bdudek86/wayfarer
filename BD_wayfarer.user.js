@@ -1,6 +1,6 @@
 // ==UserScript==
 // @name         BD Wayfarer Aid
-// @version      00.16
+// @version      00.17
 // @author       bdudek86
 // @description  Niantic Wayfarer Aid
 // @downloadURL  https://github.com/bdudek86/wayfarer/raw/main/BD_wayfarer.user.js
@@ -9,10 +9,10 @@
 // ==/UserScript==
 
 const TWAIT_LOAD = 1000; //[ms]
-const TWAIT_PHOTO = 7000; //[ms]
+const TWAIT_PHOTO = 9000; //[ms]
 const TWAIT_REJECT = 200; //[ms]
 const TWAIT_SUBMIT = 2*TWAIT_REJECT + 2000; //[ms]
-const TCOOLDOWN= 20000; //[ms]
+const TCOOLDOWN = 25000; //[ms]
 
 (function() {
     let ratingElements = [];
@@ -655,7 +655,7 @@ const TCOOLDOWN= 20000; //[ms]
     }
 
     function submitReject(e) {
-        if (new Date().getTime() - tic < TCOOLDOWN) alert("Zwolnij...");
+        if (new Date().getTime() - tic < TCOOLDOWN) alert("Zwolnij...\n\nZamknij to okno i poczekaj.\nRecenzja zostanie wysłana z opóźnieniem, żeby nie przekroczyć tempa " + TCOOLDOWN/1000 + " sekund na recenzję.");
         while(new Date().getTime() - tic < TCOOLDOWN);
         if (rejectDepth <= 1) {
             return;
@@ -737,7 +737,8 @@ const TCOOLDOWN= 20000; //[ms]
     }
 
     function trySubmit(finish) {
-        if (new Date().getTime() - tic < TCOOLDOWN) alert("Zwolnij...");
+        alertTimeout("Splash 1.0<br>This is a splash<br>Thank you for watching",5000);
+        if (new Date().getTime() - tic < TCOOLDOWN) alert("Zwolnij...\n\nZamknij to okno i poczekaj.\nRecenzja zostanie wysłana z opóźnieniem, żeby nie przekroczyć tempa " + TCOOLDOWN/1000 + " sekund na recenzję.");
         while(new Date().getTime() - tic < TCOOLDOWN);
         let smartButton = document.getElementById("wayfarerrtssbutton_0");
         if (smartButton === null || smartButton === undefined) {
@@ -845,6 +846,16 @@ const TCOOLDOWN= 20000; //[ms]
             document.activeElement.blur();
         }
         return true;
+    }
+
+    function alertTimeout(mymsg,mymsecs) {
+        var myelement = document.createElement("div");
+        myelement.setAttribute("style","background-color: grey;color:black; width: 450px;height: 200px;position: absolute;top:0;bottom:0;left:0;right:0;margin:auto;border: 4px solid black;font-family:arial;font-size:25px;font-weight:bold;display: flex; align-items: center; justify-content: center; text-align: center;");
+        myelement.innerHTML = mymsg;
+        setTimeout(function(){
+            myelement.parentNode.removeChild(myelement);
+        },mymsecs);
+        document.body.appendChild(myelement);
     }
 
 })();
