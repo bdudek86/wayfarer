@@ -1,6 +1,6 @@
 // ==UserScript==
 // @name         BD Wayfarer Aid
-// @version      00.18
+// @version      00.19
 // @author       bdudek86
 // @description  Niantic Wayfarer Aid
 // @downloadURL  https://github.com/bdudek86/wayfarer/raw/main/BD_wayfarer.user.js
@@ -655,7 +655,7 @@ const TCOOLDOWN = 25000; //[ms]
     }
 
     function submitReject(e) {
-        if (new Date().getTime() - tic < TCOOLDOWN) alert("Zwolnij...\n\nZamknij to okno i poczekaj.\nOcena zostanie wysłana z opóźnieniem, żeby nie przekroczyć tempa " + TCOOLDOWN/1000 + " sekund na recenzję.");
+        if (new Date().getTime() - tic < TCOOLDOWN) alert("Zwolnij...\n\nZamknij to okno i poczekaj.\nOcena zostanie wysłana z opóźnieniem, żeby nie przekroczyć tempa\n" + TCOOLDOWN/1000 + " sekund na recenzję.");
         while(new Date().getTime() - tic < TCOOLDOWN);
         if (rejectDepth <= 1) {
             return;
@@ -738,7 +738,7 @@ const TCOOLDOWN = 25000; //[ms]
 
     function trySubmit(finish) {
         alertTimeout("Splash 1.0<br>This is a splash<br>Thank you for watching",5000);
-        if (new Date().getTime() - tic < TCOOLDOWN) alert("Zwolnij...\n\nZamknij to okno i poczekaj.\nOcena zostanie wysłana z opóźnieniem, żeby nie przekroczyć tempa " + TCOOLDOWN/1000 + " sekund na recenzję.");
+        if (new Date().getTime() - tic < TCOOLDOWN) alert("Zwolnij...\n\nZamknij to okno i poczekaj.\nOcena zostanie wysłana z opóźnieniem, żeby nie przekroczyć tempa\n" + TCOOLDOWN/1000 + " sekund na recenzję.");
         while(new Date().getTime() - tic < TCOOLDOWN);
         let smartButton = document.getElementById("wayfarerrtssbutton_0");
         if (smartButton === null || smartButton === undefined) {
