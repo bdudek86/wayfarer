@@ -1,6 +1,6 @@
 // ==UserScript==
 // @name         BD Wayfarer Aid
-// @version      01.01
+// @version      01.02
 // @author       bdudek86
 // @description  Niantic Wayfarer Aid
 // @downloadURL  https://github.com/bdudek86/wayfarer/raw/main/BD_wayfarer.user.js
@@ -63,6 +63,7 @@ const TCOOLDOWN = 21000; //[ms]
             }
             addCss();
             tic = new Date().getTime();
+            showInfo();
             let showphoto = null;
             setTimeout( function(){ showphoto = document.querySelector('app-should-be-wayspot');
                                     if (showphoto) {
@@ -827,7 +828,6 @@ const TCOOLDOWN = 21000; //[ms]
         }
     }
 
-
     function addCss() {
         const whatIsSelector = 'div.review-categorization__option > div > div:nth-child(1)::before'
         const whatIsOptions = [...Array(10).keys()].map(e => (`div:nth-child(${e}) > ${whatIsSelector} { content: '[${e}] '; }`)).join('\n');
@@ -959,6 +959,22 @@ const TCOOLDOWN = 21000; //[ms]
             myelement.parentNode.removeChild(myelement);
         },mymsecs);
         document.body.appendChild(myelement);
+    }
+
+    function showInfo() {
+        const ref = document.querySelector('wf-logo');
+        const div = document.createElement('div');
+        div.className = 'wayfarerrctr';
+
+        let countLabel1 = document.createElement('p');
+        countLabel1.textContent = '\xA0\xA0\xA0\xA0 Oceny: F1 = odrzuć | F2 = ** | F3 = *** | F4 = **** | F5 = ***** (nowożytny) | F6 = ***** (historyczny) | Wyślij SHIFT aby wysłać natychmiast';
+        let countLabel2 = document.createElement('p');
+        countLabel2.textContent = '\xA0\xA0\xA0\xA0 Odrzucenie: T = tymczasowy | P = prywatny | L = zła lokalizacja | O = zły opis | N = element przyrody | K = K12 | U = po prostu do dupy';
+
+        div.appendChild(countLabel1);
+        div.appendChild(countLabel2);
+        const container = ref.parentNode.parentNode;
+        container.appendChild(div);
     }
 
 })();
