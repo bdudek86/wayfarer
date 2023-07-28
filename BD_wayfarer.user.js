@@ -1,9 +1,10 @@
 // ==UserScript==
 // @name         BD Wayfarer Aid
-// @version      00.19
+// @version      00.20
 // @author       bdudek86
 // @description  Niantic Wayfarer Aid
 // @downloadURL  https://github.com/bdudek86/wayfarer/raw/main/BD_wayfarer.user.js
+// @updateURL  https://github.com/bdudek86/wayfarer/raw/main/BD_wayfarer.user.js
 // @homepageURL  https://github.com/bdudek86/wayfarer
 // @match        https://wayfarer.nianticlabs.com/*
 // ==/UserScript==
@@ -12,7 +13,7 @@ const TWAIT_LOAD = 1000; //[ms]
 const TWAIT_PHOTO = 9000; //[ms]
 const TWAIT_REJECT = 200; //[ms]
 const TWAIT_SUBMIT = 2*TWAIT_REJECT + 2000; //[ms]
-const TCOOLDOWN = 25000; //[ms]
+const TCOOLDOWN = 21000; //[ms]
 
 (function() {
     let ratingElements = [];
