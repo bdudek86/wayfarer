@@ -1,6 +1,6 @@
 // ==UserScript==
 // @name         BD Wayfarer Aid
-// @version      01.00
+// @version      01.01
 // @author       bdudek86
 // @description  Niantic Wayfarer Aid
 // @downloadURL  https://github.com/bdudek86/wayfarer/raw/main/BD_wayfarer.user.js
@@ -28,6 +28,7 @@ const TCOOLDOWN = 21000; //[ms]
     let firstClick = true;
     let candidate;
     var tic;
+    let locationMutationObserver = new MutationObserver(locationsMutated);
     const markerSVG = "data:image/svg+xml,%3C%3Fxml version='1.0' encoding='UTF-8'%3F%3E%3Csvg width='28px' height='61px' viewBox='0 0 28 61' version='1.1' xmlns='http://www.w3.org/2000/svg' xmlns:xlink='http://www.w3.org/1999/xlink'%3E%3Ctitle%3EIcon-Pink%3C/title%3E%3Cg id='Icon-Pink' stroke='none' stroke-width='1' fill='none' fill-rule='evenodd'%3E%3Cpath d='M15.5093388,20.7281993 C14.9275251,20.9855232 14.2863961,21.1311947 13.6095035,21.1311947 C12.9326109,21.1311947 12.2914819,20.9855232 11.7096682,20.7281993 C10.0593063,19.997225 8.90701866,18.3486077 8.90701866,16.4278376 C8.90701866,13.8310471 11.012713,11.726225 13.6095035,11.726225 C16.206294,11.726225 18.3119883,13.8310471 18.3119883,16.4278376 C18.3119883,18.3486077 17.1597007,19.997225 15.5093388,20.7281993 M22.3271131,7.71022793 C17.5121036,2.89609069 9.70603111,2.89609069 4.89189387,7.71022793 C1.3713543,11.2307675 0.437137779,16.3484597 2.06482035,20.7281993 L2.05435293,20.7281993 L2.15379335,20.9820341 L2.20525812,21.113749 L11.1688519,44.0984412 L11.1758302,44.0984412 C11.5561462,45.0736551 12.4990855,45.7671211 13.6095035,45.7671211 C14.7190492,45.7671211 15.6619885,45.0736551 16.0431768,44.0984412 L16.0492828,44.0984412 L25.0128766,21.1163658 L25.0669582,20.9776726 L25.1637818,20.7281993 L25.1541867,20.7281993 C26.7818692,16.3484597 25.8476527,11.2307675 22.3271131,7.71022793 M13.6095035,50.6946553 C11.012713,50.6946553 8.90701866,52.7994774 8.90701866,55.3962679 C8.90701866,57.9939306 11.012713,60.099625 13.6095035,60.099625 C16.206294,60.099625 18.3119883,57.9939306 18.3119883,55.3962679 C18.3119883,52.7994774 16.206294,50.6946553 13.6095035,50.6946553' id='F' stroke='%23FFFFFF' fill='%23BB00FF'%3E%3C/path%3E%3C/g%3E%3C/svg%3E";
 
     /**
@@ -107,7 +108,7 @@ const TCOOLDOWN = 21000; //[ms]
             switch (ref.tagName) {
                 case 'APP-SHOULD-BE-WAYSPOT':
                     for (let i = 0; i < ratingElementParts.length; i++) {
-                        if (i == 2 || i == 3 || i > 8) continue;
+                        if (i == 2 || i > 7) continue;
                         ratingElements.push(ratingElementParts[i]);
                     }
                     reviewType = 'NEW';
@@ -120,6 +121,7 @@ const TCOOLDOWN = 21000; //[ms]
                         ratingElements.push(ratingElementParts[i]);
                     }
                     reviewType = 'EDIT';
+                    labelLocationMarkers();
                     addCurrentLocationMarker();
                     break;
 
@@ -143,14 +145,51 @@ const TCOOLDOWN = 21000; //[ms]
                 }
             }
 
-            const dupeContainer = document.getElementsByTagName("app-check-duplicates");
-            if (dupeContainer.length > 0) {
-                const dupeImages = dupeContainer[0].getElementsByClassName("cursor-pointer");
-                if (dupeImages.length > 0) {
-                 dupeImages[0].click();
-                }
+            const dupeImages = document.querySelectorAll('app-check-duplicates img.cursor-pointer');
+            for (let i = 0; i < dupeImages.length && i < 26; i++) {
+                const dpbox = document.createElement('div');
+                dpbox.classList.add('kbdDupeImageBox');
+                dupeImages[i].parentNode.insertBefore(dpbox, dupeImages[i]);
+                const inner = document.createElement('div');
+                inner.textContent = String.fromCharCode(65 + i);
+                dpbox.appendChild(inner);
+            }
+
+            const dupeRef = document.querySelector('app-check-duplicates nia-map');
+            if (dupeRef) {
+                const dupeHelp = document.createElement('p');
+                dupeHelp.textContent = '\u2b06\ufe0f = Zoom in; \u2b07\ufe0f = Zoom out; [A-Z] = Open duplicate window';
+                dupeHelp.classList.add('kbdDupeHelp');
+                dupeRef.parentNode.insertBefore(dupeHelp, dupeRef.nextSibling);
             }
         });
+    }
+
+    function addOptionIdx(markers){
+        for (let i = 0; i < markers.length; i++){
+            markers[i].setAttribute('option-idx', i);
+        }
+    }
+
+    function labelLocationMarkers() {
+        awaitElement(() => (
+            document.querySelector('app-select-location-edit agm-map div[role="button"]')
+        )).then(ref => {
+            addOptionIdx(document.querySelectorAll('app-select-location-edit agm-map div[role="button"]'));
+            locationMutationObserver.observe(ref.parentNode, {childList: true});
+        });
+    }
+
+    function locationsMutated(mutationList, observer){
+        for (let i = 0; i < mutationList.length; i++){
+            if (mutationList[i].addedNodes.length > 0){
+                const markers = document.querySelectorAll('app-select-location-edit agm-map div[role="button"]');
+                if (markers.length == candidate.locationEdits.length){
+                    addOptionIdx(markers);
+                }
+                break;
+            }
+        }
     }
 
     function addCurrentLocationMarker() {
@@ -176,9 +215,9 @@ const TCOOLDOWN = 21000; //[ms]
         if (whatIsItButtons.length) {
             for (let i = 0; i < whatIsItButtons.length; i+=2) {
             whatIsItButtons[i].addEventListener('click', function(e) {
-                if (e.clientX === 0 && e.clientY === 0) {
-                  return;
-                }
+//                if (e.clientX === 0 && e.clientY === 0) {
+//                  return;
+//                }
                 if (firstClick === true) {
                     firstClick = false;
                     const whatIsItButtons = document.querySelectorAll('.review-categorization > mat-button-toggle-group');;
@@ -386,7 +425,21 @@ const TCOOLDOWN = 21000; //[ms]
                 markDuplicate();
             }
         }
-        if (suppress) e.preventDefault();
+        if (suppress) {
+            e.preventDefault();
+            e.stopPropagation();
+            return false;
+        }
+    }
+
+    function openTranslate() {
+        const btn = document.querySelector('.translBtnAll');
+        if (btn) btn.click();
+    }
+
+    function openDuplicate(index) {
+        const dupes = document.querySelectorAll('app-check-duplicates img.cursor-pointer');
+        if (dupes.length - 1 >= index) dupes[index].click();
     }
 
     function setRating(rate, advance){
@@ -399,12 +452,17 @@ const TCOOLDOWN = 21000; //[ms]
             if (advance) return updateRevPosition(1, false);
         } else if (whatIsYN) {
             // What is it? (Required)
+            firstClick = false;
             whatIsYN.forEach(group => {
                 if (rate < 0 || !group.querySelector('mat-button-toggle.mat-button-toggle-checked')) {
                     group.querySelector('mat-button-toggle:nth-child(2) button').click();
                 }
             });
             if (rate >= 0 && rate <= 5) {
+                if (rate >= whatIsYN.length) {
+                    setTimeout(activateWhatIsOther, 50);
+                    return true;
+                }
                 const opts = whatIsYN[rate].querySelectorAll('mat-button-toggle');
                 for (let i = 0; i < opts.length; i++) {
                     if (!opts[i].classList.contains('mat-button-toggle-checked')) {
@@ -413,19 +471,25 @@ const TCOOLDOWN = 21000; //[ms]
                     }
                 }
             } else if (rate == -1) {
-                ratingElements[revPosition].querySelector('.review-categorization > button').click();
-                const wfinput = ratingElements[revPosition].querySelector('wf-select input');
-                if (wfinput) focusWhatIsInput(wfinput);
+                setTimeout(activateWhatIsOther, 50);
+                return true;
             }
             return true;
         } else if (whatIsButtons.length) {
-            // What is it?
-            whatIsButtons[rate].click();
-            const wfinput = ratingElements[revPosition].querySelector('wf-select input');
-            if (wfinput) focusWhatIsInput(wfinput);
+            setTimeout(activateWhatIsOther, 50);
             return true;
         }
         return false;
+    }
+
+    function activateWhatIsOther() {
+        const wfButtons = ratingElements[revPosition].getElementsByTagName("button");
+        const otherButton = wfButtons[wfButtons.length - 1];
+        if (otherButton) {
+            otherButton.click();
+            const wfinput = ratingElements[revPosition].querySelector('wf-select input');
+            if (wfinput) focusWhatIsInput(wfinput);
+        }
     }
 
     function setEditOption(option) {
@@ -497,12 +561,14 @@ const TCOOLDOWN = 21000; //[ms]
     }
 
     function showFullSupportingInfo() {
-        if (document.getElementsByTagName('mat-dialog-container').length) {
+        if (document.getElementsByTagName('mat-dialog-container').length){
             document.querySelector('div.cdk-overlay-backdrop.cdk-overlay-dark-backdrop.cdk-overlay-backdrop-showing').click();
             return;
         }
-        const supportingText = document.querySelector('app-supporting-info .wf-review-card__body .bg-gray-200 .cursor-pointer');
-        if (supportingText) supportingText.click();
+        const supportingText = document.querySelector('div.cursor-pointer');
+        if (supportingText) {
+            supportingText.click();
+        }
     }
 
     function zoomInOnMaps() {
@@ -576,7 +642,7 @@ const TCOOLDOWN = 21000; //[ms]
                   isReject = false;
                   rejectDepth = 0;
                 });
-          
+
                 const els = document.getElementsByClassName("mat-expansion-panel");
                 if (els.length > 0) {
                     const first = els[0];
@@ -717,7 +783,7 @@ const TCOOLDOWN = 21000; //[ms]
 
         ratingElements[revPosition].classList.add('kbdActiveElement');
         ratingElements[revPosition].focus();
-        ratingElements[revPosition].scrollIntoView(false);
+        ratingElements[revPosition].scrollIntoView({ block: 'center' });
 
         if (ratingElements[revPosition].id == 'categorization-card') {
             const wfinput = ratingElements[revPosition].querySelector('wf-select input');
@@ -741,20 +807,26 @@ const TCOOLDOWN = 21000; //[ms]
         alertTimeout("Splash 1.0<br>This is a splash<br>Thank you for watching",5000);
         if (new Date().getTime() - tic < TCOOLDOWN) alert("Zwolnij...\n\nZamknij to okno i poczekaj.\nOcena zostanie wysłana z opóźnieniem, żeby nie przekroczyć tempa\n" + TCOOLDOWN/1000 + " sekund na recenzję.");
         while(new Date().getTime() - tic < TCOOLDOWN);
+        const dialog = document.querySelector('mat-dialog-container');
+        if (dialog) dialog.parentNode.removeChild(dialog);
+        const submitWrapper = document.getElementsByTagName("app-submit-review-split-button");
+        const buttonParts = submitWrapper[0].getElementsByTagName("button");
+        if (finish) {
+            if (finish && buttonParts.length >= 3) {
+                buttonParts[2].click();
+                document.querySelector("button.mat-focus-indicator.mat-menu-item").click();
+            }
+            return;
+        }
         let smartButton = document.getElementById("wayfarerrtssbutton_0");
         if (smartButton === null || smartButton === undefined) {
             const submitWrapper = document.getElementsByTagName("app-submit-review-split-button");
-            const buttonParts = submitWrapper[0].getElementsByTagName("button");
-            if (finish) {
-                buttonParts[1].click();
-                document.querySelector("button.mat-focus-indicator.mat-menu-item").click()
-            } else {
-                buttonParts[0].click();
-            }
+            buttonParts[0].click();
         } else {
             smartButton.click();
         }
     }
+
 
     function addCss() {
         const whatIsSelector = 'div.review-categorization__option > div > div:nth-child(1)::before'
@@ -766,9 +838,9 @@ const TCOOLDOWN = 21000; //[ms]
             const letter = String.fromCharCode(64 + e);
             return `app-photo-card:nth-child(${e}) .photo-card__actions::before { content: '${letter}'; }`;
         }).join('\n');
-        const locationOptions = [...Array(27).keys()].map(e => {
-            const letter = String.fromCharCode(64 + e);
-            return `app-select-location-edit agm-map div[role="button"]:nth-of-type(${e})::before { content: '${letter}'; }`;
+        const locationOptions = [...Array(26).keys()].map(e => {
+            const letter = String.fromCharCode(65 + e);
+            return `app-select-location-edit agm-map div[option-idx="${e}"]:before { content: '${letter}'; }`;
         }).join('\n');
 
         const css = `
@@ -822,6 +894,36 @@ const TCOOLDOWN = 21000; //[ms]
         }
         .dark .kbdActiveElement {
             border-color: #20B8E3;
+        }
+        .kbdDupeImageBox {
+            width: 0;
+            z-index: 10;
+        }
+        .kbdDupeImageBox > div {
+            width: 1.7em;
+            margin: 5px;
+            text-align: center;
+            font-weight: bold;
+            font-size: 1.3em;
+            border: 1px solid black;
+            pointer-events: none;
+            background: rgba(0,0,0,0.5);
+            color: #FF6D38;
+        }
+        .kbdDupeHelp {
+            color: #FF6D38;
+            font-family: monospace;
+        }
+
+        app-check-duplicates nia-map .agm-map-container-inner button.wf-button[wftype="primary"]::before {
+            content: '[Enter]';
+            font-family: monospace;
+        }
+        /* Translation button integration */
+        .translBtnAll::after {
+            content: '[T]';
+            font-family: monospace;
+            color: #FF6D38;
         }
             `;
         const style = document.createElement('style');
