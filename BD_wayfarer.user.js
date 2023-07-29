@@ -1,6 +1,6 @@
 // ==UserScript==
 // @name         BD Wayfarer Aid
-// @version      01.02
+// @version      01.03
 // @author       bdudek86
 // @description  Niantic Wayfarer Aid
 // @downloadURL  https://github.com/bdudek86/wayfarer/raw/main/BD_wayfarer.user.js
@@ -11,6 +11,7 @@
 
 const TWAIT_LOAD = 1000; //[ms]
 const TWAIT_PHOTO = 9000; //[ms]
+const TWAIT_SCROLL = 3000; //[ms]
 const TWAIT_REJECT = 200; //[ms]
 const TWAIT_SUBMIT = 2*TWAIT_REJECT + 2000; //[ms]
 const TCOOLDOWN = 21000; //[ms]
@@ -63,7 +64,7 @@ const TCOOLDOWN = 21000; //[ms]
             }
             addCss();
             tic = new Date().getTime();
-            showInfo();
+            showInfo(); // pokaż informacje o klawiszach
             let showphoto = null;
             setTimeout( function(){ showphoto = document.querySelector('app-should-be-wayspot');
                                     if (showphoto) {
@@ -71,6 +72,7 @@ const TCOOLDOWN = 21000; //[ms]
                                         setTimeout( function(){ fullSizePhoto('app-should-be-wayspot');
                                                                initKeyboardCtrl();
                                                               }, TWAIT_PHOTO);
+                                        setTimeout( function(){ updateRevPosition(2, true); }, TWAIT_PHOTO+TWAIT_SCROLL);
                                     } else {
                                         initKeyboardCtrl();
                                     }
@@ -967,12 +969,15 @@ const TCOOLDOWN = 21000; //[ms]
         div.className = 'wayfarerrctr';
 
         let countLabel1 = document.createElement('p');
-        countLabel1.textContent = '\xA0\xA0\xA0\xA0 Oceny: F1 = odrzuć | F2 = ** | F3 = *** | F4 = **** | F5 = ***** (nowożytny) | F6 = ***** (historyczny) | Wyślij SHIFT aby wysłać natychmiast';
+        countLabel1.textContent = '\xA0\xA0\xA0\xA0 Oceny: F1 = odrzuć | F2 = ** | F3 = *** | F4 = **** | F5 = ***** (nowożytny) | F6 = ***** (historyczny) | Fx + SHIFT = oceń i wyślij';
         let countLabel2 = document.createElement('p');
-        countLabel2.textContent = '\xA0\xA0\xA0\xA0 Odrzucenie: T = tymczasowy | P = prywatny | L = zła lokalizacja | O = zły opis | N = element przyrody | K = K12 | U = po prostu do dupy';
+        countLabel2.textContent = '\xA0\xA0\xA0\xA0 Odrzucenie: D = duplikat | T = tymczasowy | P = prywatny | L = zła lokalizacja | O = zły opis | N = element przyrody | K = K12 | U = po prostu do dupy';
+        let countLabel3 = document.createElement('p');
+        countLabel3.textContent = '\xA0\xA0\xA0\xA0 Inne: Q = pokaż/ukryj zdjęcie główne | E = pokaż/ukryj zdjęcie pomocnicze';
 
         div.appendChild(countLabel1);
         div.appendChild(countLabel2);
+        div.appendChild(countLabel3);
         const container = ref.parentNode.parentNode;
         container.appendChild(div);
     }
