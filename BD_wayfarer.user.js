@@ -1,6 +1,6 @@
 // ==UserScript==
 // @name         BD Wayfarer Aid
-// @version      01.03
+// @version      01.04
 // @author       bdudek86
 // @description  Niantic Wayfarer Aid
 // @downloadURL  https://github.com/bdudek86/wayfarer/raw/main/BD_wayfarer.user.js
@@ -938,14 +938,14 @@ const TCOOLDOWN = 21000; //[ms]
         updateRevPosition(-100, true);
         setRating(rating-1, true);
         setRating(descr-1, true);
-        setRating(meaning-1, true);
-        setRating(unique-1, true);
-        setRating(access-1, true);
         if(document.querySelectorAll('button[title="Zamknij widok Street View"]').length) {
             setRating(location-1, true); // Street View available
         } else {
             setRating(location-3, true); // Street Viev unavailable
         }
+        setRating(meaning-1, true);
+        setRating(unique-1, true);
+        setRating(access-1, true);
         if (ratingElements[revPosition].querySelectorAll('.review-categorization > mat-button-toggle-group').length > 0) {
             setRating(0, true);
             document.activeElement.blur();
